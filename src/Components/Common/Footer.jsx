@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin, Wrench, ShoppingCart } from "lucide-react";
-import logo from "/logo.png";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   const linkSections = [

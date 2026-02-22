@@ -17,7 +17,7 @@ export default function PedidosTienda() {
   });
   const [filtroEstado, setFiltroEstado] = useState("todos");
   
-  const currency = "Q"; // Quetzales
+  const currency = "C$"; // Cordobas
 
   // Obtener pedidos reales de Supabase
   const obtenerPedidos = async () => {

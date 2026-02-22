@@ -8,7 +8,7 @@ import Counter from "../Components/Common/Counter";
 import OrderSummary from "../Components/Common/OrderSummary";
 
 export default function Cart() {
-  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "Q";
+  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "C$"; // Cambia a cordobas o usa variable de entorno
 
   const { cartItems } = useSelector((state) => state.cart);
   const products = useSelector((state) => state.product.list);

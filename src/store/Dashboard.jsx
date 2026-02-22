@@ -11,7 +11,7 @@ import Loading from "../Components/Common/Loading";
 import { supabase } from "../services/supabase"; // Ajusta la ruta según tu estructura
 
 export default function Dashboard() {
-  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "Q";
+  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "C$"; // Cambia a cordobas o usa variable de entorno
   
   const [loading, setLoading] = useState(true);
   const [dashboardData, setDashboardData] = useState({
@@ -175,7 +175,7 @@ export default function Dashboard() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
           <h1 className="text-2xl md:text-3xl">
-            Panel de <span className="text-slate-800 font-medium">TecnoMarket GT</span>
+            Panel de <span className="text-slate-800 font-medium">Moto Parts J&J</span>
           </h1>
           <p className="text-sm text-slate-400 mt-1">
             Resumen completo de tu negocio

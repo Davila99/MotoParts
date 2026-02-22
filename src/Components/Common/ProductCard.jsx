@@ -5,7 +5,7 @@ import { addToCart } from "../../features/cart/cartSlice";
 import Counter from "./Counter";
 
 const ProductCard = ({ product }) => {
-  const currency = "Q";
+  const currency = "C$"; // Cambia a cordobas o usa variable de entorno
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartItems);
   const productId = product.id;

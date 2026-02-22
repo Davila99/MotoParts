@@ -19,7 +19,7 @@ const ProductDetails = () => {
 
   const productId = product.id;
   const [mainImage, setMainImage] = useState(product.images[0]);
-  const currency = "Q"; // Quetzales
+  const currency = "C$"; // Cordobas
 
   const addToCartHandler = () => {
     dispatch(addToCart({ productId }));
@@ -39,7 +39,7 @@ const ProductDetails = () => {
               <div
                 key={index}
                 onClick={() => setMainImage(image)}
-                className="bg-slate-100 flex items-center justify-center size-16 sm:size-20 rounded-lg group cursor-pointer flex-shrink-0"
+                className="bg-slate-100 flex items-center justify-center size-16 sm:size-20 rounded-lg group cursor-pointer shrink-0"
               >
                 <img
                   src={image}

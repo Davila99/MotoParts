@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../services/supabase"; // ajusta la ruta si es necesario
-import logo from "/logo.png";
+import logo from "../assets/logo.png"; // ajusta la ruta si es necesario
 
 const StoreNavbar = () => {
   const [user, setUser] = useState(null);

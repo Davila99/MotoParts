@@ -4,7 +4,7 @@ import Loading from "../Components/Common/Loading";
 import { supabase } from "../services/supabase"; // Ajusta la ruta según tu estructura
 
 const AdministrarProductosTienda = () => {
-  const moneda = "Q"; // Cambié a Quetzales
+  const moneda = "C$"; // cambie a cordobas
 
   const [cargando, setCargando] = useState(true);
   const [productos, setProductos] = useState([]);
