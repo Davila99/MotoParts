@@ -128,7 +128,7 @@ const AddressModal = ({ setShowAddressModal, onSaveAddress, existingAddress }) =
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Nombre completo */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+                            <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
                                 <User size={16} />
                                 Nombre completo *
                             </label>
@@ -147,7 +147,7 @@ const AddressModal = ({ setShowAddressModal, onSaveAddress, existingAddress }) =
                         {/* Email y Teléfono */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+                                <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
                                     <Mail size={16} />
                                     Email *
                                 </label>
@@ -162,7 +162,7 @@ const AddressModal = ({ setShowAddressModal, onSaveAddress, existingAddress }) =
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+                                <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
                                     <Phone size={16} />
                                     Teléfono *
                                 </label>
@@ -180,7 +180,7 @@ const AddressModal = ({ setShowAddressModal, onSaveAddress, existingAddress }) =
 
                         {/* Dirección */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+                            <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
                                 <Home size={16} />
                                 Dirección completa *
                             </label>
@@ -283,7 +283,7 @@ const AddressModal = ({ setShowAddressModal, onSaveAddress, existingAddress }) =
                                 Instrucciones adicionales (opcional)
                             </label>
                             <textarea
-                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 outline-none transition min-h-[80px]"
+                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 outline-none transition min-h-20"
                                 placeholder="Ej: Llamar antes de llegar, dejar con el portero, etc."
                             />
                         </div>

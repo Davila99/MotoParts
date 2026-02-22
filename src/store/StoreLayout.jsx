@@ -38,7 +38,7 @@ const StoreLayout = () => {
   ) : (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
       <h1 className="text-2xl sm:text-4xl font-semibold text-slate-400">
-        You are not authorized to access this page
+        Tu no tienes acceso a esta tienda
       </h1>
       <Link
         to="/"
