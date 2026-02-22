@@ -11,7 +11,6 @@ import Dashboard from "./store/Dashboard";
 import StoreAddProduct from "./store/StoreAddProduct";
 import StoreManageProducts from "./store/StoreManageProducts";
 import StoreOrders from "./store/StoreOrders";
-import Orders from "./Pages/Orders";
 import Login from "./Pages/Login";
 
 
@@ -33,7 +32,6 @@ function AppContent() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/orders" element={<Orders/>} />
          <Route path="/login" element={<Login/>} />
 
         {/* Rutas del store (dashboard, etc.) */}
