@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -30,17 +30,24 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-        <h2 className="text-2xl font-bold text-center text-slate-800 mb-6">
-          Iniciar Sesión
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 px-4">
+
+      <div className="w-full max-w-sm bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-blue-200">
+
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-2">
+          Moto Parts J&J
         </h2>
 
+        <p className="text-center text-slate-600 mb-6 text-sm">
+          Accede a tu cuenta para continuar
+        </p>
+
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
+
           <input
             type="email"
             placeholder="Correo electrónico"
-            className="border border-slate-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-600 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -49,7 +56,7 @@ const Login = () => {
           <input
             type="password"
             placeholder="Contraseña"
-            className="border border-slate-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-600 transition"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -58,10 +65,11 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-slate-800 text-white py-2.5 rounded-lg hover:bg-slate-900 active:scale-95 transition-all font-medium"
+            className="bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 active:scale-95 transition-all font-semibold shadow-md"
           >
             {loading ? "Ingresando..." : "Acceder"}
           </button>
+
         </form>
       </div>
     </div>
