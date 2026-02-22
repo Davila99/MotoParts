@@ -1,24 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { supabase } from "../services/supabase";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // Credenciales de ejemplo
-  const correctUsername = "admin2026@@";
-  const correctPassword = "1234";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const [username, setUsername] = useState(correctUsername);
-  const [password, setPassword] = useState(correctPassword);
-
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === correctUsername && password === correctPassword) {
+    setLoading(true);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      toast.error(error.message);
+    } else {
       toast.success("¡Inicio de sesión correcto!");
       navigate("/store");
-    } else {
-      toast.error("Usuario o contraseña incorrectos");
     }
   };
 
@@ -31,15 +38,17 @@ const Login = () => {
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <input
-            type="text"
+            type="email"
+            placeholder="Correo electrónico"
             className="border border-slate-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition"
-
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
+
           <input
-            type="text"
+            type="password"
+            placeholder="Contraseña"
             className="border border-slate-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -48,9 +57,10 @@ const Login = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="bg-slate-800 text-white py-2.5 rounded-lg hover:bg-slate-900 active:scale-95 transition-all font-medium"
           >
-            Acceder
+            {loading ? "Ingresando..." : "Acceder"}
           </button>
         </form>
       </div>
