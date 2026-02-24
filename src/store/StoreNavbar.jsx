@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { supabase } from "../services/supabase"; // ajusta la ruta si es necesario
-import logo from "../assets/logo.png"; // ajusta la ruta si es necesario
+import logo from "../assets/logo.png";
+import { useAuth } from "../hooks/useAuth";
 
 const StoreNavbar = () => {
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user);
-    };
-
-    getUser();
-  }, []);
+  const { user, signOut } = useAuth();
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/login");
+    const { error } = await signOut();
+    if (!error) {
+      navigate("/login");
+    }
   };
 
   return (

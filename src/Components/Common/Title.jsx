@@ -12,7 +12,7 @@ const Title = ({ title, description, visibleButton = true, href = "/" }) => {
       >
         <p className="max-w-lg text-center">{description}</p>
         {visibleButton && (
-          <button className="text-blue-600 flex items-center gap-1 mt-2 sm:mt-0">
+          <button className="text-blue-600 flex items-center gap-1 mt-2 sm:mt-0" type="button">
             View more <ArrowRight size={14} />
           </button>
         )}

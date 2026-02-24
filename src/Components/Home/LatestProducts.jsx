@@ -1,93 +1,32 @@
-import { useEffect } from "react";
-import Title from "../Common/Title";
-import ProductCard from "../Common/ProductCard";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../../redux/productActions";
+import LatestProductsView from "/src/components/home/LatestProductsView";
+import { useCart } from "../../hooks/useCart";
+import { useProductos } from "../../hooks/useProductos";
 
 const LatestProducts = () => {
-  const displayQuantity = 4;
-  const dispatch = useDispatch();
-  
-  // Obtener estado de Redux
-  const products = useSelector((state) => state.product.list);
-  const loading = useSelector((state) => state.product.loading);
-  const error = useSelector((state) => state.product.error);
+  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "C$";
+  const { productos, loading, error, fetchProductos } = useProductos();
+  const { cartItems, addItem, removeItem } = useCart();
 
-  // Cargar productos al montar el componente
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  // Mostrar estados de carga y error
-  if (loading) {
-    return (
-      <div className="px-6 my-30 max-w-6xl mx-auto">
-        <Title title="Electrodomésticos" description="Cargando productos..." />
-        <div className="mt-12 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-800"></div>
-          <p className="mt-2 text-slate-600">Cargando productos...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="px-6 my-30 max-w-6xl mx-auto">
-        <Title title="Útiles Escolares" description="Error al cargar productos" />
-        <div className="mt-12 text-center text-red-500">
-          <p>Error: {error}</p>
-          <button
-            onClick={() => dispatch(fetchProducts())}
-            className="mt-4 bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-900"
-          >
-            Reintentar
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!products || products.length === 0) {
-    return (
-      <div className="px-6 my-30 max-w-6xl mx-auto">
-        <Title title="Útiles Escolares" description="No hay productos disponibles" />
-        <div className="mt-12 text-center">
-          <p className="text-slate-600">No se encontraron productos</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Ordenar por fecha (más reciente primero)
-  const sortedProducts = [...products].sort((a, b) => {
-    try {
+  const latestProducts = [...productos]
+    .sort((a, b) => {
       const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
       const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
       return dateB - dateA;
-    } catch (error) {
-      console.error("Error al ordenar productos:", error);
-      return 0;
-    }
-  });
-
-  // Tomar solo los más recientes
-  const latestProducts = sortedProducts.slice(0, displayQuantity);
+    })
+    .slice(0, 4);
 
   return (
-    <div className="px-6 my-30 max-w-6xl mx-auto">
-      <Title
-        title="Electrodomésticos"
-        description={`Se muestran ${latestProducts.length} de ${products.length} disponibles`}
-        href="/shop"
-      />
-
-      <div className="mt-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {latestProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
+    <LatestProductsView
+      products={latestProducts}
+      loading={loading}
+      error={error ? error.message : null}
+      onRetry={fetchProductos}
+      currency={currency}
+      cartItems={cartItems}
+      onAddToCart={addItem}
+      onIncrement={addItem}
+      onDecrement={removeItem}
+    />
   );
 };
 

@@ -1,18 +1,12 @@
-import { useState } from "react"
-import { useSelector } from "react-redux"
-import { DotIcon } from "lucide-react"
-import Rating from "./Rating"
-import RatingModal from "./RatingModal"
+import { useState } from "react";
+import { DotIcon } from "lucide-react";
+import Rating from "./Rating";
+import RatingModal from "./RatingModal";
 
-const OrderItem = ({ order }) => {
-  // Moneda por defecto
-  const currency = "Q"
+const OrderItem = ({ order, ratings }) => {
+  const currency = "Q";
 
-  // Estado local para el modal de calificación
-  const [ratingModal, setRatingModal] = useState(null)
-
-  // Obtener calificaciones desde Redux
-  const { ratings } = useSelector((state) => state.rating)
+  const [ratingModal, setRatingModal] = useState(null);
 
   return (
     <>
@@ -42,7 +36,7 @@ const OrderItem = ({ order }) => {
                   </p>
 
                   <div>
-                    {ratings.find(
+                    {ratings?.find(
                       (rating) =>
                         order.id === rating.orderId &&
                         item.product.id === rating.productId
@@ -147,4 +141,4 @@ const OrderItem = ({ order }) => {
   )
 }
 
-export default OrderItem
+export default OrderItem;

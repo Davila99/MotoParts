@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { Search, ShoppingCart, Menu, X } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useCart } from "../../hooks/useCart";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const cartCount = useSelector((state) => state.cart.total);
+  const { total: cartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
