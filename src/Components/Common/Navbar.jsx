@@ -25,7 +25,7 @@ const Navbar = () => {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 shadow-xl z-50 border-b border-blue-700">
+    <nav className="fixed top-0 left-0 w-full bg-linear-to-r from-blue-950 via-blue-900 to-blue-800 shadow-xl z-50 border-b border-blue-700">
 
   <div className="mx-4 sm:mx-6">
     <div className="flex items-center justify-between max-w-7xl mx-auto py-4">
